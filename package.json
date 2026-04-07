@@ -1,0 +1,17 @@
+{
+  "name": "software-testing-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.2",
+    "vitest": "^4.1.2"
+  }
+}
