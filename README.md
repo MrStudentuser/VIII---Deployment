@@ -32,7 +32,7 @@ Test coverage is measured using Vitest and reported via Coveralls.
 
 ### Continuous Integration
 
-GitHub Actions is used to automatically run tests and generate coverage reports on each push.
+GitHub Actions is used to automatically run tests and generate coverage reports on each pushor pull.
 
 ### Issues found during testing
 
