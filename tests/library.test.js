@@ -40,12 +40,14 @@ import toString from '../src/toString.js'
 import upperFirst from '../src/upperFirst.js'
 import words from '../src/words.js'
 
+// Math utility tests to verify arithmetic conversion and rounding behaviour.
+
 describe('math utilities', () => {
   it('add adds two numbers', () => {
     expect(add(2, 3)).toBe(5)
     expect(add(-1, 1)).toBe(0)
   })
-
+// skipped due to found bug in divide.js
   it.skip('divide divides two numbers', () => {
   expect(divide(10, 2)).toBe(5)
 })
@@ -54,7 +56,7 @@ describe('math utilities', () => {
     expect(ceil(4.006)).toBe(5)
     expect(ceil(6.004, 2)).toBe(6.01)
   })
-
+// skipped due to bug found in clamp.js
   it.skip('clamp limits values to a range', () => {
   expect(clamp(3, 1, 5)).toBe(3)
   expect(clamp(-10, -5, 5)).toBeGreaterThanOrEqual(-5)
@@ -77,19 +79,21 @@ describe('math utilities', () => {
   })
 })
 
+// Array utility tests focus on shape-changing behaviour and edge cases.
+
 describe('array utilities', () => {
   it('castArray wraps non-array values and preserves arrays', () => {
     expect(castArray(1)).toEqual([1])
     expect(castArray([1, 2])).toEqual([1, 2])
     expect(castArray()).toEqual([undefined])
   })
-
+// skipped due to bug found on chunk.js
   it.skip('chunk splits array into groups', () => {
   const result = chunk([1, 2, 3, 4], 2)
   expect(result.length).toBe(2)
   expect(result[0]).toEqual([1, 2])
 })
-
+// skipped due to bug found in compact.js.
   it.skip('compact removes falsey values', () => {
   expect(compact([0, 1, false, 2, '', 3])).toEqual([1, 2, 3])
 })
@@ -109,12 +113,13 @@ describe('array utilities', () => {
     expect(slice([1, 2, 3, 4], 1, 3)).toEqual([2, 3])
     expect(slice([1, 2, 3], 1)).toEqual([2, 3])
   })
-
+// at() is tested using nested object paths
   it('at returns values at given paths', () => {
     const object = { a: [{ b: { c: 3 } }, 4] }
     expect(at(object, ['a[0].b.c', 'a[1]'])).toEqual([3, 4])
   })
-  
+ // keys() is tested with several input types to cover both branches
+ // array-like values and normal objects 
   it('keys returns indices for arrays', () => {
   const result = keys([10, 20, 30])
 
@@ -151,6 +156,8 @@ describe('array utilities', () => {
   })
 })
 
+// Collection utility tests cover iteration, mapping, filtering and reduction
+
 describe('collection utilities', () => {
   it('map maps arrays', () => {
     expect(map([1, 2, 3], n => n * 2)).toEqual([2, 4, 6])
@@ -168,11 +175,13 @@ describe('collection utilities', () => {
     expect(every([true, 1, 'yes'], Boolean)).toBe(true)
     expect(every([true, 0, 'yes'], Boolean)).toBe(false)
   })
-
+// skipped due to bug found in countBy.js
   it.skip('countBy groups by iteratee result', () => {
   expect(countBy([6.1, 4.2, 6.3], Math.floor)).toEqual({ 4: 1, 6: 2 })
 })
 })
+
+// Object/path utility tests verify nested lookup, defaults and equality semantics.
 
 describe('object/path utilities', () => {
   it('get reads nested properties', () => {
@@ -206,6 +215,9 @@ it('defaultTo returns default for undefined', () => {
   })
 })
 
+// String utility tests cover capitalization, suffix matching, conversion,
+// and word splitting for both ASCII and Unicode-like inputs.
+
 describe('string utilities', () => {
   it('capitalize uppercases first letter and lowercases the rest', () => {
     expect(capitalize('FRED')).toBe('Fred')
@@ -216,7 +228,7 @@ describe('string utilities', () => {
     expect(upperFirst('fred')).toBe('Fred')
     expect(upperFirst('FRED')).toBe('FRED')
   })
-
+// skipped due to bug found in camelCase.js
   it.skip('camelCase converts a basic spaced string', () => {
   expect(camelCase('Foo Bar')).toBe('fooBar')
 })
@@ -231,12 +243,13 @@ describe('string utilities', () => {
     expect(endsWith('abc', 'b', 2)).toBe(true)
     expect(endsWith('abc', 'b')).toBe(false)
   })
-
+// This test follows the actual implementation rather than documentation,
+// bacause the current toString.js returns 'null' for null.
   it('toString converts values to strings', () => {
-  expect(toString(null)).toBe('null')   // matches implementation
+  expect(toString(null)).toBe('null')   
   expect(toString([1, 2, 3])).toBe('1,2,3')
 })
-
+// extra word-splitting tests were added to improve branch coverage in words.
 describe('words extra coverage', () => {
   it('splits plain ascii words by default', () => {
     expect(words('alpha beta gamma')).toEqual(['alpha', 'beta', 'gamma'])
@@ -268,6 +281,8 @@ describe('words extra coverage', () => {
 })
 
 })
+
+// Type-check utility tests verify detection of common JavaScript value categories.
 
 describe('type-check utilities', () => {
   it('isArguments detects arguments objects', () => {
