@@ -18,9 +18,13 @@ Individuals who remove or modify the license file will also carry the consequenc
 
 This project includes a unit testing suite implemented using Vitest.
 
-### Installing
+### Installing dependencies
 
 npm install
+
+### Running tests locally
+
+npm run test
 
 ### Running coverage locally
 
@@ -32,7 +36,7 @@ Test coverage is measured using Vitest and reported via Coveralls.
 
 ### Continuous Integration
 
-GitHub Actions is used to automatically run tests and generate coverage reports on each pushor pull.
+GitHub Actions is used to automatically run tests and generate coverage reports on each push or pull.
 
 ### Issues found during testing
 
