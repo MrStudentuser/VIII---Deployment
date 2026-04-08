@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/MrStudentuser/VIII---Deployment/badge.svg?branch=main)](https://coveralls.io/github/MrStudentuser/VIII---Deployment?branch=main)
+
 # Student template (Modified)
 
 ## Purpose of this repository
