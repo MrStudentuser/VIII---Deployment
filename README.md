@@ -43,10 +43,15 @@ GitHub Actions is used to automatically run tests and generate coverage reports 
 During testing, several issues were discovered in the library:
 
 divide.js - incorrect division logic
+
 clamp.js - incorrect boundary handling
+
 chunk.js - overwrites chunks due to missing index increment
+
 compact.js - skips first valid element
+
 countBy.js - initializes counts incorrectly
+
 camelCase.js - produces leading whitespace
 
 These issues have been reported in the repository issue tracker.
